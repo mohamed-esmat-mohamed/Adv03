@@ -23,3 +23,26 @@ List<string> gradeLabels = grades.ConvertAll(g => $"Grade: {g}");
 Console.WriteLine(string.Join(" | ", gradeLabels));
 Console.WriteLine();
 #endregion
+
+#region Leaderboard
+Console.WriteLine("===== Exercise 2: Leaderboard =====");
+SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>();
+leaderboard.Add(500, "Ahmed");
+leaderboard.Add(200, "Sara");
+leaderboard.Add(800, "Ali");
+leaderboard.Add(350, "Mona");
+foreach (var entry in leaderboard)
+    Console.WriteLine($"{entry.Key} => {entry.Value}");
+Console.WriteLine($"First key: {leaderboard.Keys.First()}");
+Console.WriteLine($"First value: {leaderboard.Values.First()}");
+Console.WriteLine($"Score 500 exists? {leaderboard.ContainsKey(500)}");
+if (leaderboard.TryGetValue(999, out string? player))
+    Console.WriteLine($"Player with 999: {player}");
+else
+    Console.WriteLine("No player with score 999");
+leaderboard.Remove(200);
+Console.WriteLine("Updated leaderboard:");
+foreach (var entry in leaderboard)
+    Console.WriteLine($"{entry.Key} => {entry.Value}");
+Console.WriteLine();
+#endregion
