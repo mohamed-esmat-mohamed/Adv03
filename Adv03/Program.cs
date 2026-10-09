@@ -103,3 +103,25 @@ HashSet<int> small = new HashSet<int> { 1, 2 };
 Console.WriteLine($"{{1,2}} is subset of A? {small.IsSubsetOf(setA)}");
 Console.WriteLine();
 #endregion
+
+
+#region Print Queue
+Queue<string> printQueue = new Queue<string>();
+printQueue.Enqueue("Report.pdf");
+printQueue.Enqueue("Invoice.pdf");
+printQueue.Enqueue("Letter.docx");
+printQueue.Enqueue("Resume.pdf");
+printQueue.Enqueue("Photo.jpg");
+Console.WriteLine("Queue: " + string.Join(", ", printQueue));
+Console.WriteLine($"Count: {printQueue.Count}");
+Console.WriteLine($"Next to print: {printQueue.Peek()}");
+while (printQueue.Count > 0)
+{
+    string doc = printQueue.Dequeue();
+    Console.WriteLine($"Printing: {doc}");
+}
+bool success = printQueue.TryDequeue(out string? result);
+Console.WriteLine($"TryDequeue on empty queue -> success: {success}, result: {(result ?? "null")}");
+Console.WriteLine("(It returns false and doesn't throw. Dequeue() would throw InvalidOperationException.)");
+Console.WriteLine();
+#endregion
