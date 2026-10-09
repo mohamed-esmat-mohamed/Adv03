@@ -125,3 +125,26 @@ Console.WriteLine($"TryDequeue on empty queue -> success: {success}, result: {(r
 Console.WriteLine("(It returns false and doesn't throw. Dequeue() would throw InvalidOperationException.)");
 Console.WriteLine();
 #endregion
+
+
+#region Browser History 
+Stack<string> history = new Stack<string>();
+history.Push("google.com");
+history.Push("github.com");
+history.Push("stackoverflow.com");
+history.Push("youtube.com");
+history.Push("claude.ai");
+Console.WriteLine($"Current page: {history.Peek()}");
+for (int i = 1; i <= 3; i++)
+{
+    string left = history.Pop();
+    Console.WriteLine($"Back #{i} - leaving: {left}");
+}
+Console.WriteLine($"Current page now: {history.Peek()}");
+while (history.Count > 0)
+    history.Pop();
+
+bool popped = history.TryPop(out string? page);
+Console.WriteLine($"TryPop on empty stack -> success: {popped}, result: {(page ?? "null")}");
+Console.WriteLine("(It returns false and doesn't throw. Pop() would throw InvalidOperationException.)");
+#endregion
