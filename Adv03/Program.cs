@@ -46,3 +46,32 @@ foreach (var entry in leaderboard)
     Console.WriteLine($"{entry.Key} => {entry.Value}");
 Console.WriteLine();
 #endregion
+
+#region Phone_Book
+Dictionary<string, string> phoneBook = new Dictionary<string, string>
+{
+    { "Ahmed", "01011111111" },
+    { "Sara",  "01022222222" },
+    { "Ali",   "01033333333" },
+    { "Mona",  "01044444444" }
+};
+phoneBook["Omar"] = "01055555555";   
+phoneBook["Ahmed"] = "01099999999";  
+Console.WriteLine("After [] add/update: " + string.Join(", ", phoneBook.Select(c => $"{c.Key}={c.Value}")));
+try
+{
+    phoneBook.Add("Sara", "01000000000");
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"Add() failed: {ex.Message}");
+}
+bool added = phoneBook.TryAdd("Sara", "01000000000");
+Console.WriteLine($"TryAdd succeeded? {added}");
+Console.WriteLine($"Contains 'Hassan'? {phoneBook.ContainsKey("Hassan")}");
+string number = phoneBook.GetValueOrDefault("Hassan", "Not Found");
+Console.WriteLine($"Hassan: {number}");
+Console.WriteLine("Keys:   " + string.Join(", ", phoneBook.Keys));
+Console.WriteLine("Values: " + string.Join(", ", phoneBook.Values));
+Console.WriteLine();
+#endregion
